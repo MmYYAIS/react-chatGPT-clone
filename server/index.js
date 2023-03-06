@@ -18,6 +18,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post("/", async (req, res) => {
+  const origin = req.get('Origin');
+console.log('Request origin:', origin);
   const { message } = req.body;
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
